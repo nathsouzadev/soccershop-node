@@ -6,5 +6,12 @@ Soccershop é um projeto de e-commerce desenvolvido durante o curso na RecodePro
 <br>Filtro dinâmico dos itens na página 'Produto'
 <br>Livro de visitas na página 'Contato'
 
-**Implementações em andamento**
-O projeto está sendo totalmente convertido para React, trabalhando com SPA.
+**Frontend**
+- React
+- React Router
+
+**Backend**
+- NodeJS
+- Express
+- CORS
+- BodyParser
