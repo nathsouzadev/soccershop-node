@@ -1,0 +1,20 @@
+#root {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(56, 55, 54, 0.6)), url(../images/soccerbg3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+.principal {
+    background-image: url(../images/torcida.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+}
+
+.msg + .msg {
+    margin-top: 5px;
+}
