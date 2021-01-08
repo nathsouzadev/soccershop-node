@@ -14,13 +14,13 @@ module.exports = function(app) {
     app.post('/msg/sent', function(req, res){
         const content = req.body;
         const conn = app.config.database();
-        const msg = app.models.getContent;
+        const message = app.models.getContent;
 
-        msg.sentMessages(content, conn, function(error, result){
-
+        message.sentMessages(content, conn, function(error, result){
+            console.log(error, result);
         });
 
-        msg.getMessages(conn, 
+        message.getMessages(conn, 
             function(error,result,fields){
                 console.log(error,result);
                 res.json(result)

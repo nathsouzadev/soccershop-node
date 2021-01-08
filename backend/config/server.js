@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const corsOptions ={
-    origin: 'https://localhost:5000/',
+    origin: 'http://localhost:5000/',
     optionsSuccessStatus: 200
 }
 
@@ -12,8 +12,9 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 consign()
 .include('./routes')
