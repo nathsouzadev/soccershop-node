@@ -1,4 +1,3 @@
-import React from 'react';
 import payment from '../assets/payment.jpeg';
 
 const Footer = () => {

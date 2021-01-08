@@ -1,4 +1,3 @@
-import React from 'react';
 import notfound from '../assets/error404_min.jpg';
 
 const NotFound = () => {
