@@ -18,7 +18,7 @@ const SentMsg = () => {
     function newMsg(event) {
         event.preventDefault();
         let form = new FormData(event.target);
-        const url = "http://localhost/soccershop/backend/sentmsg.php";
+        const url = "http://localhost:5000/msg/sent";
         fetch(url, { 
             method: "POST",
             body: form
