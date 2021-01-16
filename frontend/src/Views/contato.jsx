@@ -1,5 +1,4 @@
-import SentMsg from '../components/Contact/sent';
-import MsgList from '../components/Contact/MsgList';
+import Msg from '../components/Contact/Msg';
 import ButtonContact from '../components/Contact/contact';
 import phone from '../assets/phone.svg';
 import mail from '../assets/mail.svg';
@@ -18,13 +17,7 @@ const ContatcPage = () => {
                     </ButtonContact>
                 </div>
 
-                <div className="row justify-content-center mt-1">
-                    <SentMsg/>  
-                </div>
-
-                <div className="mt-1">
-                    <MsgList/>
-                </div>
+                <Msg/>
             </main>
         </>
         );
