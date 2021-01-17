@@ -1,4 +1,4 @@
-import Msg from '../components/Contact/Msg';
+import SentMsg from '../components/Contact/Msg';
 import ButtonContact from '../components/Contact/contact';
 import phone from '../assets/phone.svg';
 import mail from '../assets/mail.svg';
@@ -17,7 +17,7 @@ const ContatcPage = () => {
                     </ButtonContact>
                 </div>
 
-                <Msg/>
+                <SentMsg/>
             </main>
         </>
         );

@@ -11,16 +11,16 @@ const SentMsg = () => {
     const [message, setMessage] = useState('');
 
     useEffect(async () => {
-        const url = "http://localhost:5000/msg";
+        const url = "http://localhost:5000/comments";
         const res = await fetch(url);
         setMsg(await res.json());
     }, [render])
     
     function newMsg(event) {
         event.preventDefault();
-        let form = {"name_msg": name,
-                    "msg": message};
-        const url = "http://localhost:5000/msg/";
+        let form = {name_msg: name,
+                    msg: message};
+        const url = "http://localhost:5000/comments";
         fetch(url, { 
             method: "POST",
             headers: {
