@@ -10,10 +10,8 @@ const INITIAL_STATE = {
 export default function cart(state = INITIAL_STATE, action){
     switch(action.type){
         case 'ADD_TO_CART':
-            console.log(action);
             if(state.value === 0){
                 let cart = {
-                    id_cart: (state.value + 1),
                     id: action.product.id_product, 
                     name: action.product.name_product,
                     price: action.product.price,
@@ -30,7 +28,6 @@ export default function cart(state = INITIAL_STATE, action){
                 });
                 if (!check){
                     let cart = {
-                        id_cart: (state.value + 1),
                         id: action.product.id_product, 
                         name: action.product.name_product,
                         price: action.product.price,
@@ -44,7 +41,22 @@ export default function cart(state = INITIAL_STATE, action){
                 value: ( state.value+1 )
             }
         case 'REMOVE_CART':
-            return {...state, value:( action.cart_items - 1)};
+            if(action.product.quantity > 1){
+                action.product.quantity--
+                return {...state, value:( action.cart_items - 1)};
+            }
+        case 'ADD_ITEM':
+            action.product.quantity++
+            return {...state, value:( action.cart_items + 1)};
+        case 'DELETE_ITEM':
+            console.log(action.product.id, state.Carts.id)
+            return{
+                ...state,
+                value: (action.cart_items - action.product.quantity),
+                Carts: state.Carts.filter(item => {
+                    return item.id !== action.product.id
+                })
+            }
         default:
             return state
     }

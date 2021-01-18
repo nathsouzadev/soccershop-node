@@ -2,9 +2,6 @@ import { connect } from 'react-redux';
 import CartModal from './CartModal';
 
 const Cart = ({cart_items}) => {
-    
-    console.log(cart_items);
-
     return(
         <>
             <button type="button" className="btn btn-info" data-toggle="modal" data-target="#CartModal">

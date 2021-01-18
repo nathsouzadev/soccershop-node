@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as CartActions from '../store/actions/cart';
 
-const CartModal = ({cart_items, products_cart}) => {
+const CartModal = ({cart_items, products, Remove, AddItem, DeleteItem}) => {
     
     return(
         <div className="modal fade" id="CartModal" tabIndex="-1" aria-labelledby="CartModalLabel" aria-hidden="true">
@@ -14,14 +16,14 @@ const CartModal = ({cart_items, products_cart}) => {
                 </div>
                 <div className="modal-body">
                     <ul>
-                    {products_cart.map(product =>{
+                    {products.map(product =>{
                         return(
                             <li key={product.id_cart}>
-                                <span className="badge badge-danger"><i className="fas fa-window-close"></i></span>
+                                <button className="badge badge-danger" onClick={()=>DeleteItem(cart_items, product)}><i className="fas fa-window-close"></i></button>
                                 {product.name}
                                 <span className="badge badge-pill badge-warning">{product.quantity}</span>
-                                <span className="badge badge-pill badge-primary"><i className="fas fa-plus"></i></span>
-                                <span className="badge badge-pill badge-danger"><i className="fas fa-minus"></i></span>
+                                <button className="badge badge-pill badge-primary" onClick={()=>AddItem(cart_items, product)}><i className="fas fa-plus"></i></button>
+                                <button className="badge badge-pill badge-danger" onClick={()=>Remove(cart_items, product)}><i className="fas fa-minus"></i></button>
                             </li>
                         )
                     })}
@@ -40,7 +42,9 @@ const CartModal = ({cart_items, products_cart}) => {
 
 const mapStateToProps = state => ({
     cart_items: state.cart.value,
-    products_cart: state.cart.Carts,
+    products: state.cart.Carts,
 })
 
-export default connect(mapStateToProps)(CartModal);
+const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartModal);

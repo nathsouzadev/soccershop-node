@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CartActions from '../store/actions/cart';
 
-const Card = ({ id_category, image, descricao, name_product, price, onMouseEnter, onMouseLeave, cart_items, product, Add, Remove }) => {
+const Card = ({ id_category, image, descricao, name_product, price, onMouseEnter, onMouseLeave, cart_items, product, Add }) => {
 
     return(
         <div id={id_category} className="card col-sm-12 col-md-6 col-lg-3 border-light box-item" >
