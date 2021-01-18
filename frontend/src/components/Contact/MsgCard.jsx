@@ -4,7 +4,7 @@ const MsgCard = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.author}</h5>
                 <p className="card-text">{props.children}</p>
-                <p className="card-text"><small class="text-muted">{props.date}</small></p>
+                <p className="card-text"><small className="text-muted">{props.date}</small></p>
             </div>
         </div>
     )

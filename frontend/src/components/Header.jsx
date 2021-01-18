@@ -1,5 +1,6 @@
 import logo from '../assets/favicon_soccershop.png';
 import { Link } from 'react-router-dom';
+import CartButton from './Cart/CartButton';
 
 const Header = () => {
         return (
@@ -38,6 +39,9 @@ const Header = () => {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link text-white" to="/contato">Contato</Link>
+                                </li>
+                                <li>
+                                    <CartButton/>
                                 </li>
                             </ul>
                         </div>
