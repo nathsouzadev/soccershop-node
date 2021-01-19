@@ -1,7 +1,10 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CartModal from './CartModal';
 
-const Cart = ({cart_items}) => {
+const Cart = () => {
+    
+    const cart_items = useSelector(state => state.cart.value)
+    
     return(
         <>
             <button type="button" className="btn btn-info" data-toggle="modal" data-target="#CartModal">
@@ -13,4 +16,4 @@ const Cart = ({cart_items}) => {
     )
 }
 
-export default connect(state => ({ cart_items: state.cart.value }))(Cart);
+export default Cart;

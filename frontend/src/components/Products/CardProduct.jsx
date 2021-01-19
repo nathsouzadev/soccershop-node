@@ -1,27 +1,22 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as CartActions from '../store/actions/cart';
+import { useSelector, useDispatch } from 'react-redux';
+import cartActions from '../store/actions/cart';
 
-const Card = ({ id_category, image, descricao, name_product, price, onMouseEnter, onMouseLeave, cart_items, product, Add }) => {
+const Card = (props) => {
 
-    const formatPrice = price.toFixed(2);
+    const cart_items = useSelector(state => state.cart.value)
+    const dispatch = useDispatch();    
+    const formatPrice = props.price.toFixed(2);
 
     return(
-        <div id={id_category} className="card col-sm-12 col-md-6 col-lg-3 border-light box-item" >
-            <img src={image} className="card-img-top img-thumbnail" alt={descricao} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
+        <div id={props.id_category} className="card col-sm-12 col-md-6 col-lg-3 border-light box-item" >
+            <img src={props.image} className="card-img-top img-thumbnail" alt={props.descricao} onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave} />
             <div className="card-body">
-                <h5 className="card-title">{name_product}</h5>
+                <h5 className="card-title">{props.name_product}</h5>
                 <p className="card-text">R$ {formatPrice}</p>
             </div>
-            <button className="btn btn-primary" onClick={()=>Add(cart_items, product)}>Add</button>
+            <button className="btn btn-primary" onClick={()=>dispatch(cartActions.Add(cart_items, props.product))}>Add</button>
         </div>
     )
 }
 
-const mapStateToProps = state => ({
-    cart_items: state.cart.value,
-})
-
-const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default Card;

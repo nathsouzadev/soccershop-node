@@ -53,7 +53,6 @@ export default function cart(state = INITIAL_STATE, action){
             action.product.quantity++
             return {...state, value:( action.cart_items + 1)};
         case 'DELETE_ITEM':
-            console.log(action.product.id, state.Carts.id)
             return{
                 ...state,
                 value: (action.cart_items - action.product.quantity),
