@@ -3,4 +3,5 @@ module.exports = server => {
 
     server.post('/comments', comment.create);
     server.get('/comments', comment.findAll);
+    server.delete('/comments/:commentId', comment.delete);
 };

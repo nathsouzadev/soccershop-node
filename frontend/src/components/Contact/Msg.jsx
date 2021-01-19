@@ -7,6 +7,7 @@ const SentMsg = () => {
     const [msg, setMsg] = useState([]);
     const [render, setRender] = useState(false);
     const [alert, setAlert] = useState(false);
+    const [error, setError] = useState(false);
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
 
@@ -28,12 +29,22 @@ const SentMsg = () => {
             },
             body: JSON.stringify(form)
         }).then((res) => res.json()).then((data) => {
+            console.log(data)
+            if(data.error){
+                setError(data.error)
+
+                setTimeout(() => {
+                    setError(false);
+                }, 2000)
+
+                return;
+            }
             setRender(!render);
             setAlert(data)
 
             setTimeout(() => {
                 setAlert(false);
-            }, 1000)
+            }, 2000)
         })
 
         setName('');
@@ -65,12 +76,18 @@ const SentMsg = () => {
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div> }
+                { error && <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                    Erro ao enviar mensagem!
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> }
             </div>
             <div className="mt-1">
                 {msg.map(row => {
                     return(
                         <span key={row.id}>
-                            <MsgCard author={row.name_msg} date={row.date}>{row.msg}</MsgCard>
+                            <MsgCard id={row.id} author={row.name_msg} date={row.date}>{row.msg}</MsgCard>
                         </span>
                     )
                 })}

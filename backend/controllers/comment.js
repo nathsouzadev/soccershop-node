@@ -14,7 +14,7 @@ exports.create = (req, res) => {
 
     Comment.create(comment, (error, results) => {
         if(error){
-            return error;
+            res.send(results)
         } res.send(results);
     })
 }
@@ -24,5 +24,14 @@ exports.findAll = (req, res) => {
         if(error){
             return error;
         } res.send(results);
+    })
+}
+
+exports.delete = (req, res) => {
+    const {commentId} = req.params
+    Comment.delete(commentId, (error, results) => {
+        if(error){
+            return error;
+        }   res.send({message: `Comment was deleted successfully`})
     })
 }
