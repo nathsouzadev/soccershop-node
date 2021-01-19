@@ -15,6 +15,7 @@ export default function cart(state = INITIAL_STATE, action){
                     id: action.product.id_product, 
                     name: action.product.name_product,
                     price: action.product.price,
+                    image: action.product.image,
                     quantity: 1,
                 }
                 state.Carts.push(cart);
@@ -31,6 +32,7 @@ export default function cart(state = INITIAL_STATE, action){
                         id: action.product.id_product, 
                         name: action.product.name_product,
                         price: action.product.price,
+                        image: action.product.image,
                         quantity: 1,
                     }
                     state.Carts.push(cart);
@@ -44,6 +46,8 @@ export default function cart(state = INITIAL_STATE, action){
             if(action.product.quantity > 1){
                 action.product.quantity--
                 return {...state, value:( action.cart_items - 1)};
+            } else {
+                return state
             }
         case 'ADD_ITEM':
             action.product.quantity++
