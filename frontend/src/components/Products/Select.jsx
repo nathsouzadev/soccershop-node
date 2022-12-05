@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import API from './API_Products';
+import productsList from '../store/reducers/product'
 
 const SelectItems = () =>{
     const [categorys, setCategorys] = useState([]);
 
     useEffect(async () => {
-        const res = await fetch(API);
-        setCategorys(await res.json());
+        // const res = await fetch(API);
+        setCategorys(productsList);
     }, [])
 
     //create array with category and id 
